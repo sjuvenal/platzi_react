@@ -6,7 +6,7 @@ const TodoConext = React.createContext();
 
 function TodoProvider( {children}) {
 
-    //const [todos, setTodos] = React.useState(parsedTodos);  
+  //const [todos, setTodos] = React.useState(parsedTodos);  
   //const [todos, saveTodos] = useLocalStorage('TODOS_V1',[]);
   const {
     item: todos, //reasigmons, mejor dicho cambimos de nombre
@@ -15,6 +15,7 @@ function TodoProvider( {children}) {
     error,
   } = useLocalStorage('TODOS_V1',[]);
   const [searchValue, setSearchValue] = React.useState('');
+  const [openModal, setOpenModal] = React.useState(true);
   
   const completedTodos = todos.filter(
     todo => !!todo.completed
@@ -76,7 +77,9 @@ function TodoProvider( {children}) {
             setSearchValue,
             searchTodo,
             completeTodo,
-            deleteTodo
+            deleteTodo,
+            openModal,
+            setOpenModal,
         }}>
             {children}
         </TodoConext.Provider>
